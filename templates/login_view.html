@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>login</title>
+  
+ <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    
+  <style>
+    
+    /* Reset & Base Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #edf2f7, #e2e8f0);
+    }
+    /* Container */
+    .login-box {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      max-width: 360px;
+      width: 100%;
+      padding: 2rem;
+    }
+    .login-box h1 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #111827;
+    }
+    /* Form Fields */
+    .login-box label {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #4b5563;
+      font-size: 0.9rem;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    .login-box input:focus {
+      border-color: #3b82f6;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+    /* Button */
+    .login-btn {
+      width: 100%;
+      padding: 0.85rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-btn:hover {
+      background-color: #2563eb;
+    }
+    /* Options Row */
+    .login-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      color: #6b7280;
+    }
+    .login-options a {
+      color: #3b82f6;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .login-options a:hover {
+      color: #1e40af;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h1>Sign in to Travello</h1>
+    <form action="login_view" method="POST">
+        {%csrf_token%}
+      <label for="username">Email address</label>
+      <input type="text" id="email" name="username" placeholder="Nico" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="••••••••" required>
+
+      <button type="submit" class="login-btn">Continue</button>
+
+      <div class="login-options">
+        <label><input type="checkbox" checked> Remember me</label>
+        <a href="#">Forgot password?</a>
+      </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    {% if messages %}
+        <script>
+            {% for message in messages %}
+                Swal.fire({
+                    icon: 'success',
+                    title: '{{ message }}',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            {% endfor %}
+        </script>
+    {% endif %}
+  </div>
+</body>
+</html>

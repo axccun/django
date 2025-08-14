@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px #fff, 0 0 20px #f0f, 0 0 30px #0ff, 0 0 40px #ff0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px 50px;
+            border-radius: 15px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4, 0 0 30px #ff69b4, 0 0 40px #ff69b4;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff1493, 0 0 40px #ff1493, 0 0 50px #ff1493;
+            }
+        }
+    </style>
+    <body>
+        
+        <form action="add" method="post">
+            {% csrf_token %} 
+            enter the first number : <input type="text" name="num1"><br>
+            enter the second number :<input type="text" name="num2"><br>
+            <input type="submit">
+        </form>
+    </body>
+
+{% endblock content %}
